@@ -16,3 +16,8 @@ class SimpleTransformer(nn.Module):
     dim_feedforward=2048,
     droopout=0.1,
     batch_first=True
+  )
+  self.transformer_encoder = nn. TranformerEncoder(encoder_layer, num_layers)
+  self.output_projection = nn.Linerar(d_model, 1)
+
+def generate_positional_encoding(self, d_model, max len):
