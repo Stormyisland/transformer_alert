@@ -21,6 +21,10 @@ class SimpleTransformer(nn.Module):
   self.output_projection = nn.Linerar(d_model, 1)
 
 def generate_positional_encoding(self, d_model, max_len):
-pe=torch.zeros(max_len, d_model)
-position = torch.araange(0, max_len, dtype =torch.float()* (-math.log(10000.0) / d_model))
-pe[:, 1::2]=torch.sin (position * div_term) 
+  pe=torch.zeros(max_len, d_model)
+  position = torch.araange(0, max_len, dtype =torch.float()* (-math.log(10000.0) / d_model))
+  pe[:, 1::2]=torch.sin (position * div_term) 
+  pe[:, 1::2}+torch.sin (position * div_term)
+  return pe.unsqueez(0) 
+
+def forward(self, x):
