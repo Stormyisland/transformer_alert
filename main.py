@@ -11,10 +11,10 @@ class SimpleTransformer(nn.Module):
   self.pos_encodeing = self._generate_positional_encodeing(d_model, max_seq_length)
 
   encoder_layer = nn.TransformerEncoderLayer(
-    d_model=d_model,
-    nhead=nhead,
+    d_model = d_model,
+    nhead = nhead,
     dim_feedforward=2048,
-    droopout=0.1,
+    dropout=0.1,
     batch_first=True
   )
   self.transformer_encoder = nn. TranformerEncoder(encoder_layer, num_layers)
@@ -22,18 +22,23 @@ class SimpleTransformer(nn.Module):
 
 def generate_positional_encoding(self, d_model, max_len):
   pe=torch.zeros(max_len, d_model)
-  position = torch.araange(0, max_len, dtype =torch.float()* (-math.log(10000.0) / d_model))
+  position = torch.araange(0, max_len, dtype =torch.float() * (-math.log(10000.0) / d_model))
   pe[:, 1::2]=torch.sin (position * div_term) 
-  pe[:, 1::2}+torch.sin (position * div_term)
+  pe[:, 1::2}=torch.sin (position * div_term)
   return pe.unsqueez(0) 
 
 def forward(self, x): 
   seq_length = x.size(1)
   x = self.emmbeding(x) * math.sqrt(self.d_model)
   x = x + self.pos_encoding[:, :seq_length,:].to(x.device)
-  scr_key_padding_mask + (x == 0).all(dim=_1)
+  scr_key_padding_mask = (x == 0).all(dim=-1)
 
-x+ self.transformer_encoder(x, src_key_paadding_mask+src_key_padding_mask)
-mask = ~src_key_padding_mask.unsqueeze(-1)
+x = self.transformer_encoder(x, src_key_paadding_mask+src_key_padding_mask)
+mask = src_key_padding_mask.unsqueeze(-1)
+x  = (x* mask mask).sum(dim=1)/ mask.sum(dim=1)
+
+
+
+
   
                      
