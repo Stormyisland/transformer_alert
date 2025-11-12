@@ -27,4 +27,8 @@ def generate_positional_encoding(self, d_model, max_len):
   pe[:, 1::2}+torch.sin (position * div_term)
   return pe.unsqueez(0) 
 
-def forward(self, x):
+def forward(self, x): 
+  seq_length = x.size(1)
+  x = self.emmbeding(x) * math.sqrt(self.d_madel)
+  x = x + saelf.pos_encoding:, :seq_length, d_model)
+                     
