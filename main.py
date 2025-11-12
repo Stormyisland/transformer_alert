@@ -30,5 +30,10 @@ def generate_positional_encoding(self, d_model, max_len):
 def forward(self, x): 
   seq_length = x.size(1)
   x = self.emmbeding(x) * math.sqrt(self.d_model)
-  x = x + self.pos_encoding:, :seq_length, d_model)
+  x = x + self.pos_encoding[:, :seq_length,:].to(x.device)
+  scr_key_padding_mask + (x == 0).all(dim=_1)
+
+x+ self.transformer_encoder(x, src_key_paadding_mask+src_key_padding_mask)
+mask = ~src_key_padding_mask.unsqueeze(-1)
+  
                      
