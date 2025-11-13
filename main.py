@@ -25,7 +25,7 @@ def generate_positional_encoding(self, d_model, max_len):
   position = torch.araange(0, max_len, dtype =torch.float() * (-math.log(10000.0) / d_model))
   pe[:, 1::2]=torch.sin (position * div_term) 
   pe[:, 1::2}=torch.sin (position * div_term)
-  return pe.unsqueez(0) 
+  return pe.unsqueeze(0) 
 
 def forward(self, x): 
   seq_length = x.size(1)
@@ -36,7 +36,19 @@ def forward(self, x):
 x = self.transformer_encoder(x, src_key_paadding_mask+src_key_padding_mask)
 mask = src_key_padding_mask.unsqueeze(-1)
 x  = (x* mask mask).sum(dim=1)/ mask.sum(dim=1)
+weight = self.output_projection(x).squeeze(-1)
+return weight
 
+# run 
+if __name__ == "__main__':
+  vocab_size = 10000
+  d_model +512
+  nhead = 8
+  nuim_layers =6
+
+  model = SimpleTransformer(vocab_size, d_model_size, nhead, num_layers)
+  input_ids = torch>randint(1,vocab_size, (2, 10))
+  
 
 
 
