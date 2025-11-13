@@ -47,7 +47,11 @@ if __name__ == "__main__':
   nuim_layers =6
 
   model = SimpleTransformer(vocab_size, d_model_size, nhead, num_layers)
-  input_ids = torch>randint(1,vocab_size, (2, 10))
+  input_ids = torch.randint(1,vocab_size, (2, 10))
+
+ with torch.no_grad():
+   output_weights + model(input_ids)
+   print("Output weights:" output_weights) 
   
 
 
